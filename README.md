@@ -9,3 +9,12 @@ For information regarding the main project, please visit:
 
 1. *NSF*: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1442246&HistoricalAwards=false
 2. *Dimensions Repo*: https://github.com/LennonLab/Dimensions
+3. 
+
+## Contributors
+
+Jared Brewer: REU Research, Undergraduate, Department of Biology, Transylvania University. 
+
+[Will Shoemaker](https://github.com/wrshoemaker): Ph.D. student in the [Lennon Lab](http://www.indiana.edu/~microbes/people.php)
+
+[Dr. Jay Lennon](http://www.indiana.edu/~microbes/people.php): Principle Investigator, Associate Professor, Department of Biology, Indiana University, Bloomington. Head of the [Lennon Lab](http://www.indiana.edu/~microbes/people.php).
