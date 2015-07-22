@@ -12,3 +12,9 @@ LBY <- read.csv("./LBYViolacein_07222015_WJB.csv", header = T)
 LBYW <- read.csv("./LBYWViolacein_07222015_WJB.csv", header = T)
 
 # I have these data reformatted in a variety of ways, but I'm still not getting anywhere with actually getting it analyzed. Help?
+
+white.aov <- aov(WLB~WLBW*WLBY*WLBYW, data=media)
+summary(white.aov)
+
+purple.aov <- aov(PLB~PLBW*PLBY*PLBYW, data=media)
+summary(purple.aov)
