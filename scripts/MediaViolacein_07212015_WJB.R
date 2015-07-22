@@ -5,7 +5,7 @@
 
 # The end goal here is to perform an ANOVA and make a bar plot. 
 
-media <- read.csv("./MediaViolacein_07222015_WJB.csv", header = T)
+media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
 LB <- read.csv("./LBViolacein_07222015_WJB.csv", header = T)
 LBW <- read.csv("./LBWViolacein_07222015_WJB.csv", header = T)
 LBY <- read.csv("./LBYViolacein_07222015_WJB.csv", header = T)

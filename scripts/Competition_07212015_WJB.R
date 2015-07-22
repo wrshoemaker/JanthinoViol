@@ -8,6 +8,8 @@
 comp <- read.csv("./Competition_07212015_WJB.csv", header = T)
 attach(comp)
 
+# Consider the ratio between the purple and the white instead of the raw numbers (since they probably don't mean anything anyway).
+
 comp.aov <- aov(PB*WB~PA*WA)
 summary(comp.aov)
 

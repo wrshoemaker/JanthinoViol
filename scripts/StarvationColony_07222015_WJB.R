@@ -8,6 +8,9 @@
 tencol <- read.csv("StarvationColony_TenDay_07222015_WJB.csv", header = T)
 onecol <- read.csv("StarvationColony_OneDay_07222015_WJB.csv", header = T)
 
+# Look at relative abundance and graph separately.
+# Also think about doing ratios instead of absolute numbers.
+
 plot(tencol$Day, tencol$Purple, col='purple')
 points(tencol$Day, tencol$White, col='black')
 abline(lm(Day~Purple, data=tencol, col='purple'))
