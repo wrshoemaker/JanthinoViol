@@ -7,3 +7,5 @@
 
 pred <- read.csv("./Predation_07212015_WJB.csv", header = T)
 attach(pred)
+
+# I think I have a data formatting issue that I don't understand. 
