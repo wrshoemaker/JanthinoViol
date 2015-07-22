@@ -13,7 +13,7 @@ For information regarding the main project, please visit:
 
 ## Contributors
 
-Jared Brewer: REU Research, Undergraduate, Department of Biology, Transylvania University. 
+[Jared Brewer](http://jaredbrewer.me): REU Research, Undergraduate, Department of Biology, Transylvania University. 
 
 [Will Shoemaker](https://github.com/wrshoemaker): Ph.D. student in the [Lennon Lab](http://www.indiana.edu/~microbes/people.php)
 
