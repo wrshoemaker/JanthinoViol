@@ -9,6 +9,7 @@ pred <- read.csv("./Predation_07222015_WJB.csv", header = T)
 attach(pred)
 
 # I think I have a data formatting issue that I don't understand. 
+# I'm getting nowhere.
 
 ppred.aov <- aov(PPTT*WPTT~PWP*PWW, data=pred)
 summary(ppred.aov)
