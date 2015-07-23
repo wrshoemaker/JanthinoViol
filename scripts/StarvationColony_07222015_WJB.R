@@ -5,14 +5,14 @@
 
 # Run a regression and make a line plot.
 
-tencol <- read.csv("StarvationColony_TenDay_07222015_WJB.csv", header = T)
+tencol <- read.csv("StarvationColony_TenDay_07232015_WJB.csv", header = T)
 onecol <- read.csv("StarvationColony_OneDay_07222015_WJB.csv", header = T)
 
 # Look at relative abundance and graph separately.
 # Also think about doing ratios instead of absolute numbers.
 
-plot(tencol$Day, tencol$Purple, col='purple')
-points(tencol$Day, tencol$White, col='black')
+plot(tencol$Day, tencol$Ratio, col='purple')
+# So these look a lot better, but I'm confused about how to best separate the white and purple ones. So close.
 abline(lm(Day~Purple, data=tencol, col='purple'))
 abline(lm(Day~White, data=tencol, col='black'))
 

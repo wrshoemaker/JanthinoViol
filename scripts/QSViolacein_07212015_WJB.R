@@ -17,7 +17,7 @@ qs.std <- c(sd(qs$WNP, na.rm=T), sd(qs$WOP, na.rm=T))
 qs.n <- c(sum(qs$WNP, na.rm=T)/mean(qs$WOP, na.rm=T), sum(qs$WOP, na.rm=T)/mean(qs$WNP, na.rm=T))
 qs.se <- c(qs.std/sqrt(abs(qs.n)))
 
-qs.bar <- barplot(qs.means, names = c("WNP", "WOP"), xlab="Treatment", ylab="Violacein Units", ylim=c(-1, 2), col=c("steelblue1", "firebrick1"))
+qs.bar <- barplot(qs.means, names = c("WNP", "WOP"), xlab="Treatment", ylab="Violacein Units", ylim=c(-1, 2), col=c("darkorchid4", "white"))
 abline(h=0)
 segments(qs.bar, qs.means+qs.se, qs.bar, qs.means-qs.se) 
 # Applies vertical marks for standard error

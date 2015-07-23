@@ -20,7 +20,7 @@ media.std <- c(sd(media2$PLB, na.rm=T), sd(media2$WLB, na.rm=T), sd(media2$PLBW,
 media.n <- c(sum(media2$PLB, na.rm=T)/mean(media2$PLB, na.rm=T), sum(media2$WLB, na.rm=T)/mean(media2$WLB, na.rm=T), sum(media2$PLBW, na.rm=T)/mean(media2$PLBW, na.rm=T), sum(media2$WLBW, na.rm=T)/mean(media2$WLBW, na.rm=T), sum(media2$PLBY, na.rm=T)/mean(media2$PLBY, na.rm=T), sum(media2$WLBY, na.rm=T)/mean(media2$WLBY, na.rm=T), sum(media2$PLBYW, na.rm=T)/mean(media2$PLBYW, na.rm=T), sum(media2$WLBYW, na.rm=T)/mean(media2$WLBYW, na.rm=T))
 media.se <- c(media.std/sqrt(abs(media.n)))
 
-media.bar <- barplot(media.means, names = c("PLB", "WLB", "PLBW", "WLBW", "PLBY", "WLBY", "PLBYW", "WLBYW"), xlab="Media Type", ylab="Violacein Units", ylim=c(0, 16), col=c("steelblue1", "firebrick1"))
+media.bar <- barplot(media.means, names = c("LB", "LB", "LB-Tryptophan", "LB-Tryptophan", "LB-Glycerol", "LB-Glycerol", "LB-Both", "LB-Both"), xlab="Media Type", ylab="Violacein Units", ylim=c(0, 16), col=c("darkorchid4", "white"))
 abline(h=0)
 segments(media.bar, media.means+media.se, media.bar, media.means-media.se) 
 # Applies vertical marks for standard error
