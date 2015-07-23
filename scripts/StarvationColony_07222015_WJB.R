@@ -1,7 +1,7 @@
 # Starvation Culture Colony Count Analysis
 # Jared Brewer
 # Created: July 22, 2015
-# Modified: July 22, 2015
+# Modified: July 23, 2015
 
 # Run a regression and make a line plot.
 
