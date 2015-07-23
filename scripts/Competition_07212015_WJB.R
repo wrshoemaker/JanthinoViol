@@ -12,6 +12,7 @@ attach(comp)
 
 comp.aov <- aov(PB*WB~PA*WA)
 summary(comp.aov)
+TukeyHSD(comp.aov)
 
 means <- c(mean(comp$PB, na.rm=T), mean(comp$PA, na.rm=T), mean(comp$WB, na.rm=T), mean(comp$WA, na.rm=T))
 comp.std <- c(sd(comp$PB, na.rm=T), sd(comp$PA, na.rm=T), sd(comp$WB, na.rm=T), sd(comp$WA, na.rm=T)) 

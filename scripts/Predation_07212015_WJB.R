@@ -5,14 +5,25 @@
 
 # The end goal here is to perform an ANOVA and make a bar plot. 
 
-pred <- read.csv("./Predation_07222015_WJB.csv", header = T)
+pred <- read.csv("./Predation_07212015_WJB.csv", header = T)
 attach(pred)
 
-# I think I have a data formatting issue that I don't understand. 
-# I'm getting nowhere.
+pred.aov <- aov(PA+WA~Name, data=pred)
+summary(pred.aov)
+TukeyHSD(pred.aov)
 
-ppred.aov <- aov(PPTT*WPTT~PWP*PWW, data=pred)
-summary(ppred.aov)
+pred2 <- read.csv("./Predation_07222015_WJB.csv", header = T)
 
-wpred.aov <- aov(PWTT*WWTT~PWP*PWW, data=pred)
-summary(wpred.aov)
+pred.means <- c(mean(pred2$PPTT, na.rm=T), mean(pred2$WPTT, na.rm=T), mean(pred2$PWTT, na.rm=T), mean(pred2$WWTT, na.rm=T), mean(pred2$PWP, na.rm=T), mean(pred2$PWW, na.rm=T))
+pred.std <- c(sd(pred2$PPTT, na.rm=T), sd(pred2$WPTT, na.rm=T), sd(pred2$PWTT, na.rm=T), sd(pred2$WWTT, na.rm=T), sd(pred2$PWP, na.rm=T), sd(pred2$PWW, na.rm=T)) 
+pred.n <- c(sum(pred2$PPTT, na.rm=T)/mean(pred2$PPTT, na.rm=T), sum(pred2$WPTT, na.rm=T)/mean(pred2$WPTT, na.rm=T), sum(pred2$PWTT, na.rm=T)/mean(pred2$PWTT, na.rm=T), sum(pred2$WWTT, na.rm=T)/mean(pred2$WWTT, na.rm=T), sum(pred2$PWP, na.rm=T)/mean(pred2$PWP, na.rm=T), sum(pred2$PWW, na.rm=T)/mean(pred2$PWW, na.rm=T))
+pred.se <- c(pred.std/sqrt(abs(pred.n)))
+
+pred.bar <- barplot(pred.means, names = c("PPTT", "WPTT", "PWTT", "WWTT", "PWP", "PWW"), xlab="Conditions", ylab="Violacein Units", ylim=c(0, 1.5e+8), col=c("steelblue1", "firebrick1"))
+abline(h=0)
+segments(pred.bar, pred.means+pred.se, pred.bar, pred.means-pred.se) 
+# Applies vertical marks for standard error
+segments(pred.bar -0.05, pred.means+pred.se, pred.bar +0.05, pred.means+pred.se) 
+# Makes horizontal tick on positive SE
+# Numbers determine the width of the ticks
+segments(pred.bar -0.05, pred.means-pred.se, pred.bar +0.05, pred.means-pred.se) 
