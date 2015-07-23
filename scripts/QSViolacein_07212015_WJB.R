@@ -10,6 +10,7 @@ attach(qs)
 
 qs.aov <- aov(WNP~WOP, data=qs)
 summary(qs.aov)
+TukeyHSD(qs.aov)
 
 qs.means <- c(mean(qs$WNP, na.rm=T), mean(qs$WOP, na.rm=T))
 qs.std <- c(sd(qs$WNP, na.rm=T), sd(qs$WOP, na.rm=T)) 
