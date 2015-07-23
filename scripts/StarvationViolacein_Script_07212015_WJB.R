@@ -24,13 +24,22 @@ abline(lm(Day~W, data=tenvio, col='black'))
 # Run a regression and look for differences, one at a time.
 tenvioP.reg <- lm(Day~P, data=tenvio)
 summary(tenvioP.reg)
+log10P <- log(tenvio$P)
 # Non-signficant P-value here. I'm not sure what else could be done.
 # Caveat: I'm not convinced that violacein is a linear function of cell density?
 
 tenvioW.reg <- lm(Day~W, data=tenvio)
 summary(tenvioW.reg)
+log10W <- log(tenvio$W)
 # Same here. No signficant result. What now? Since they are not linear, is there a good way to normalize?
 # Stuck.
+
+# Attempt to plot the logarithmic transformation of the data - will this help?
+
+plot(tenvio$Day, log10P, col='purple')
+points(tenvio$Day, log10W, col='black')
+
+#That might have helped.
 
 plot(onevio$Day, onevio$P, col='purple')
 points(onevio$Day, onevio$W, col='black')
@@ -39,9 +48,8 @@ abline(lm(Day~W, data=onevio, col='black'))
 
 onevioP.reg <- lm(Day~P, data=onevio)
 summary(onevioP.reg)
+log1P <- log(onevio$P)
 
 onevioW.reg <- lm(Day~W, data=onevio)
 summary(onevioW.reg)
-
-# These are WAY better than the ten day ones. I wonder why that is. 
-# I'm at another impasse.
+log1W <- log(onevio$W)
