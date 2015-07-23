@@ -32,3 +32,5 @@ segments(media.bar -0.05, media.means-media.se, media.bar +0.05, media.means-med
 legend(locator(1), rownames(media$Phenotype), fill = c("darkorchid4", "white"))
 # Error in as.graphicsAnnot(legend) :
 # argument "legend" is missing, with no default
+
+# Latent errors are mostly concerned with the legend on the graph. Everything else looks good.

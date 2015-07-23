@@ -19,7 +19,7 @@ abline(lm(Day~W, data=tencol))
 
 # Run a regression and look for differences, one at a time.
 tencolP.reg <- lm(Day~P, data=tencol)
-summary(tencol.reg)
+summary(tencolP.reg)
 # Significance! 
 
 tencolW.reg <- lm(Day~W, data=tencol)
@@ -35,3 +35,6 @@ summary(onecolP.reg)
 
 onecolW.reg <- lm(Day~W, data=onecol)
 summary(onecolW.reg)
+
+# What does it mean to fit a model to it? Will a regression give me that data? 
+# How do I fit proper lines to it? And how do I get an equation from that?

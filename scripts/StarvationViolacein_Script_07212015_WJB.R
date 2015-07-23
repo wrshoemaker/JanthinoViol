@@ -53,3 +53,6 @@ log1P <- log(onevio$P)
 onevioW.reg <- lm(Day~W, data=onevio)
 summary(onevioW.reg)
 log1W <- log(onevio$W)
+
+# The lines on this one seem a little erratic, but that might be able to be adjusted. 
+# Again, how do I extract an equation from this? And why would that be helpful?

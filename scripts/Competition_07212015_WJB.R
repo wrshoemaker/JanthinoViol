@@ -27,3 +27,5 @@ segments(comp.bar -0.05, means+comp.se, comp.bar +0.05, means+comp.se)
 # Makes horizontal tick on positive SE
 # Numbers determine the width of the ticks
 segments(comp.bar -0.05, means-comp.se, comp.bar +0.05, means-comp.se) 
+
+# This one also runs very smoothly. 

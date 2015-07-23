@@ -25,3 +25,6 @@ segments(qs.bar -0.05, qs.means+qs.se, qs.bar +0.05, qs.means+qs.se)
 # Makes horizontal tick on positive SE
 # Numbers determine the width of the ticks
 segments(qs.bar -0.05, qs.means-qs.se, qs.bar +0.05, qs.means-qs.se) 
+
+# It is odd that the WOP is negative, but that's an adjusting error that can be fixed with some rapidity.
+# Looks smooth otherwise.
