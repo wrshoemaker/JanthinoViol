@@ -13,7 +13,6 @@ onecol <- read.csv("StarvationColony_OneDay_07232015_2_WJB.csv", header = T)
 
 plot(tencol$Day, tencol$P, col='purple')
 points(tencol$Day, tencol$W, col='black')
-# So these look a lot better, but I'm confused about how to best separate the white and purple ones. So close.
 abline(lm(Day~P, data=tencol))
 abline(lm(Day~W, data=tencol))
 

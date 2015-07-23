@@ -11,13 +11,14 @@ attach(pred)
 pred.aov <- aov(PTT+WTT~PW, data=pred)
 summary(pred.aov)
 TukeyHSD(pred.aov)
+# No factors in the fitted model? I don't know what that means.
 
 pred.means <- c(mean(pred$PTT, na.rm=T), mean(pred$WTT, na.rm=T), mean(pred$PW, na.rm=T))
 pred.std <- c(sd(pred$PTT, na.rm=T), sd(pred$PTT, na.rm=T), sd(pred$WTT, na.rm=T), sd(pred$WTT, na.rm=T), sd(pred$PW, na.rm=T), sd(pred$PW, na.rm=T)) 
 pred.n <- c(sum(pred$PTT, na.rm=T)/mean(pred$PTT, na.rm=T), sum(pred$WTT, na.rm=T)/mean(pred$WTT, na.rm=T), sum(pred$PW, na.rm=T)/mean(pred$PW, na.rm=T))
 pred.se <- c(pred.std/sqrt(abs(pred.n)))
 
-pred.bar <- barplot(pred.means, names = c("Purple", "Mixed Culture", "White"), xlab="Culture Mixed with Tetrahymena", ylab="Purple:White Colony Ratio", ylim=c(0, 1), col=c("darkorchid4", "mediumorchid1", "white"))
+pred.bar <- barplot(pred.means, names = c("Purple", "Mixed Culture", "White"), xlab="Culture Mixed with Tetrahymena", ylab="Purple:White Colony Ratio", ylim=c(0, 1.1), col=c("darkorchid4", "mediumorchid1", "white"))
 abline(h=0)
 segments(pred.bar, pred.means+pred.se, pred.bar, pred.means-pred.se) 
 # Applies vertical marks for standard error
