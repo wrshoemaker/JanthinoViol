@@ -6,7 +6,6 @@
 # The end goal here is to perform an ANOVA and make a bar plot. 
 
 media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
-media.names <- read.csv("./MediaNames.csv", header = F)
 
 media.aov <- aov(Violacein~Media+Phenotype, data=media)
 summary(media.aov)
@@ -30,4 +29,6 @@ segments(media.bar -0.05, media.means+media.se, media.bar +0.05, media.means+med
 # Numbers determine the width of the ticks
 segments(media.bar -0.05, media.means-media.se, media.bar +0.05, media.means-media.se) 
 # I've run into a stumbling block with the legend, but I think that this can be resolved.
-legend(locator(1), rownames(media.names), fill = c("darkorchid4", "white"))
+legend(locator(1), rownames(media$Phenotype), fill = c("darkorchid4", "white"))
+# Error in as.graphicsAnnot(legend) :
+# argument "legend" is missing, with no default
