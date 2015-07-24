@@ -37,3 +37,4 @@ summary(onecolW.reg)
 
 # What does it mean to fit a model to it? Will a regression give me that data? 
 # How do I fit proper lines to it? And how do I get an equation from that?
+# Yep, still nothing.

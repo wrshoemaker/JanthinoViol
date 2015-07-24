@@ -1,7 +1,7 @@
 # Predation Colony Count Analysis
 # Jared Brewer
 # Created: July 21, 2015
-# Modified: July 23, 2015
+# Modified: July 24, 2015
 
 # The end goal here is to perform an ANOVA and make a bar plot. 
 
@@ -26,3 +26,7 @@ segments(pred.bar -0.05, pred.means+pred.se, pred.bar +0.05, pred.means+pred.se)
 # Makes horizontal tick on positive SE
 # Numbers determine the width of the ticks
 segments(pred.bar -0.05, pred.means-pred.se, pred.bar +0.05, pred.means-pred.se) 
+
+# One issue I see here is that I should hypothetically be comparing this data to something.
+# I guess the hypothesis is that it should be different than 50%, but I don't know what to think of that.
+# Perhaps I forgot something in designing the experiment? 
