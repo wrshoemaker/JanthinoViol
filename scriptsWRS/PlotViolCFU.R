@@ -6,7 +6,7 @@
 
 rm(list=ls())
 getwd()
-setwd('/Users/WRShoemaker/github//JanthinoViol')
+setwd('~/github//JanthinoViol')
 getwd()
 
 library(ggplot2)
