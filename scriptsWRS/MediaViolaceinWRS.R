@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol//')
+setwd('~/github//JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -11,7 +11,7 @@ library(plyr)
 
 # The end goal here is to perform an ANOVA and make a bar plot.
 
-media <- read.csv("data/MediaViolacein_07212015_WJB.csv", header = T)
+media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
 
 attach(media)
 # Pairwise scatter plot
@@ -21,7 +21,13 @@ pairs(media, pch=20)
 #use anova(object) to test the omnibus hypothesis
 #Are main or interaction effects present in the independent variables?
 violaov <- anova(lm(media$Violacein ~ media$Media * media$Phenotype))
+<<<<<<< HEAD
 interaction.plot(media$Phenotype, media$Media, media$Violacein)
+=======
+
+interaction.plot(media$Violacein, media$Media, media$Media)
+# This gave 26 warnings and wasn't able to produce a plot for me. -J
+>>>>>>> upstream/master
 
 # So there's a significant omnibus interaction for media, 
 # but not for the interaction of media and phenotypes
@@ -29,6 +35,7 @@ interaction.plot(media$Phenotype, media$Media, media$Violacein)
 
 # We can visualize what we did above 
 dotplot(media$Violacein ~ media$Media | media$Phenotype)
+# This works fine. - J
 
 # And we can use Tukey's test to see which media types are different
 violTuk <- TukeyHSD(aov(Violacein ~ Media, data=media))
