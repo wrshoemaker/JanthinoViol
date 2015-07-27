@@ -10,6 +10,7 @@ media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
 media.aov <- aov(Violacein~Media+Phenotype, data=media)
 summary(media.aov)
 TukeyHSD(media.aov)
+# I don't think these are necessarily normal across the board. What does that mean?
 
 # Graphing the data may require a little reformatting, but these two-level ANOVAs are great! 
 

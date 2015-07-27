@@ -13,6 +13,7 @@ attach(comp)
 comp.aov <- aov(BRatio~ARatio)
 summary(comp.aov)
 TukeyHSD(comp.aov)
+# P value = 0.241
 # Same error as the QSViolacein script.
 
 means <- c(mean(comp$BRatio, na.rm=T), mean(comp$ARatio, na.rm=T))
