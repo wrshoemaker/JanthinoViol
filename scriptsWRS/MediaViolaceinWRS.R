@@ -21,13 +21,7 @@ pairs(media, pch=20)
 #use anova(object) to test the omnibus hypothesis
 #Are main or interaction effects present in the independent variables?
 violaov <- anova(lm(media$Violacein ~ media$Media * media$Phenotype))
-<<<<<<< HEAD
-interaction.plot(media$Phenotype, media$Media, media$Violacein)
-=======
 
-interaction.plot(media$Violacein, media$Media, media$Media)
-# This gave 26 warnings and wasn't able to produce a plot for me. -J
->>>>>>> upstream/master
 
 # So there's a significant omnibus interaction for media, 
 # but not for the interaction of media and phenotypes

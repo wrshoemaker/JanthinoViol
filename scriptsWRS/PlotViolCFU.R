@@ -10,7 +10,6 @@ setwd('~/github/JanthinoViol/data')
 getwd()
 
 library(ggplot2)
-library(xlsx)
 library(reshape2)
 library(RColorBrewer)
 library(plyr)
