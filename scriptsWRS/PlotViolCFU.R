@@ -6,7 +6,7 @@
 
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol')
+setwd('~/github/JanthinoViol/data')
 getwd()
 
 library(ggplot2)
@@ -17,17 +17,14 @@ library(plyr)
 library(Rmisc)
 
 # load data
-CFU1count <-  read.csv("./data/StarvationColony_OneDay_07222015_WJB.csv",
-                       head = T, sep = ",")
-CFU10count <- read.csv("./data//StarvationColony_TenDay_07222015_WJB.csv",
-                        head=TRUE,sep=",")
+CFU1count <-  read.csv("StarvationColony_OneDay_07222015_WJB.csv", header = T)
+CFU10count <- read.csv("StarvationColony_TenDay_07222015_WJB.csv", header = T)
 
-CFU1dayRA <- read.csv("./data/StarvationColony_OneDay_07232015_WJB.csv")
-CFU10dayRA <- read.csv("./data//StarvationColony_TenDay_07232015_WJB.csv",
-                     head=TRUE,sep=",")
+CFU1dayRA <- read.csv("StarvationColony_OneDay_07232015_WJB.csv", header = T)
+CFU10dayRA <- read.csv("StarvationColony_TenDay_07232015_WJB.csv", header = T)
 
-Viol1day <- read.csv("./data/StarvationViolacein_OneDay_07212015_WJB.csv")
-Viol10day <- read.csv("./data/StarvationViolacein_TenDay_07212015_WJB.csv") 
+Viol1day <- read.csv("StarvationViolacein_OneDay_07212015_WJB.csv", header = T)
+Viol10day <- read.csv("StarvationViolacein_TenDay_07212015_WJB.csv", header = T) 
 
 # Sum the purple and white CFU counts for 1 and 10 day lines
 CFU1count$Total <- as.numeric(CFU1count$Purple) + as.numeric(CFU1count$White)
@@ -94,5 +91,3 @@ ggplot(ViolSE, aes(x=Day, y=value, colour=Variables)) +
   geom_errorbar(aes(ymin=value-se, ymax=value+se), width=.1) +
   geom_line() +
   geom_point() 
-
-
