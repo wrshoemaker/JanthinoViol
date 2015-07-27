@@ -45,7 +45,6 @@ CFUcountMergesubset$Variables <- do.call(paste, c(CFUcountMergesubset[c("Name", 
 d.new <- d
 CFUcountMergesubset$Total <- log(CFUcountMergesubset$Total, 10)
 
-
 # Now let's do the same thing for everything else
 CFU1dayRA$Transfer <- rep(1,nrow(CFU1dayRA)) 
 CFU10dayRA$Transfer <- rep(10,nrow(CFU10dayRA)) 
