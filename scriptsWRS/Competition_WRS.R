@@ -2,17 +2,45 @@ rm(list=ls())
 getwd()
 setwd('~/github//JanthinoViol/data/')
 getwd()
-comp <- read.csv("./Competition_07232015_WJB.csv", header = T)
-
 library(ggplot2)
 library(MASS)
-wilcox.test(comp$BRatio, comp$ARatio, paired=TRUE) 
-# This result is not a significant different, but it is close. - J
+library(reshape2)
 
-# Now for a plot, I got a little crazy
-p <- ggplot(meltedComp, aes(x=variable, y=value, fill=variable)) +
-  geom_violin(trim=FALSE) + 
-  geom_boxplot(width=0.1) + theme_minimal()
-p
+compCFU <- read.csv("./Competition_07212015_WJB.csv", header = T)
+compRA <- read.csv("./Competition_07232015_WJB.csv", header = T)
 
-# It gives me the error that "object meltedComp not found". I don't know what that means since i've never used ggplot before. -J
+# First we'll look at the total CFU difference before and after compeition,
+# Then we'll look at the relative abundances (RA)
+
+# First, add a column summing purple and white CFUs
+compCFU$BeforeTotal <- as.numeric(compCFU$PB) + as.numeric(compCFU$WB)
+compCFU$AfterTotal <- as.numeric(compCFU$PA) + as.numeric(compCFU$WA)
+# Then we'll log-transform
+compCFU$BeforeTotalLog <- log(compCFU$BeforeTotal, 10)
+compCFU$AfterTotalLog <- log(compCFU$AfterTotal, 10)
+compCFU$PBlog <- log(compCFU$PB, 10)
+compCFU$WBlog <- log(compCFU$WB, 10)
+compCFU$PAlog <- log(compCFU$PA, 10)
+compCFU$WAlog <- log(compCFU$WA, 10)
+
+# Run a Wilcoxon signed-rank test
+wilcox.test(compCFU$BeforeTotalLog, compCFU$AfterTotalLog, paired=TRUE) 
+# Not significant 
+# Plot it
+compCFUsubset <- subset(compCFU, select = c(BeforeTotalLog,AfterTotalLog, PBlog, WBlog, PAlog, WAlog))
+meltCFU <- melt(compCFUsubset)
+
+ggplot(meltCFU, aes(x=variable, y=value, fill=variable)) + geom_boxplot()
+# Not much of a trend
+
+# Let's look at the RA data
+meltRA <- melt(compRA)
+ggplot(meltRA, aes(x=variable, y=value, fill=variable)) + 
+  geom_boxplot() + 
+  geom_jitter()
+
+# Not too bad so far, after there's more variation, a larger median
+# Let's see how it handles a Wilcoxon signed-rank test
+wilcox.test(compRA$BRatio, compRA$ARatio, paired=TRUE) 
+# Not significant, but under the assumptions of the test
+# But, this is still a large increase. 
