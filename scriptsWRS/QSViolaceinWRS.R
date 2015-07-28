@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol//')
+setwd('~/github//JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -9,7 +9,7 @@ library(lsmeans)
 library(multcompView)
 library(plyr)
 
-qs <- read.csv("data/QSViolacein_07212015_WJB.csv", header = T)
+qs <- read.csv("QSViolacein_07212015_WJB.csv", header = T)
 qs.melt <- melt(qs)
 
 # so two treatments, we can do a Wilcoxon rank sum test, since the data is unpaired 

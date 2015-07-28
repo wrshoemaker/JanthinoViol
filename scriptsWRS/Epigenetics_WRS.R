@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/')
+setwd('~/github//JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -9,7 +9,7 @@ library(lsmeans)
 library(multcompView)
 library(plyr)
 
-epi <- read.csv("./data/EpigeneticsViolacein_07272015_WJB.csv", header = T)
+epi <- read.csv("EpigeneticsViolacein_07272015_WJB.csv", header = T)
 epi.melt <- melt(epi)
 qqnorm(epi.melt$value)
 wilcox.test(epi$Aza, epi$Control, paired=T) 

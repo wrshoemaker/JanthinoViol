@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/data/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
 library(ggplot2)
 library(MASS)

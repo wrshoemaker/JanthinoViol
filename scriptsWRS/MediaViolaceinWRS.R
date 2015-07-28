@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/data/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -11,7 +11,7 @@ library(plyr)
 
 # The end goal here is to perform an ANOVA and make a bar plot.
 
-media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
+media <- read.csv("MediaViolacein_07212015_WJB.csv", header = T)
 
 attach(media)
 # Pairwise scatter plot
