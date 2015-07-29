@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/data/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -11,7 +11,7 @@ library(plyr)
 
 # The end goal here is to perform an ANOVA and make a bar plot.
 
-media <- read.csv("./MediaViolacein_07212015_WJB.csv", header = T)
+media <- read.csv("MediaViolacein_07212015_WJB.csv", header = T)
 
 attach(media)
 # Pairwise scatter plot
@@ -44,7 +44,8 @@ violTuk
 # and "Media"
 media$Variables <- do.call(paste, c(media[c("Media", "Phenotype")], sep = "")) 
 
-ggplot(media, aes(x=Variables, y=Violacein, fill=Variables)) + geom_boxplot()
+media.palette <- scale_colour_hue()
+ggplot(media, aes(x=Variables, y=Violacein, fill=Variables)) + geom_boxplot() + geom_blank() + ylab("Violacein Units") + scale_fill_manual(values = c("firebrick1", "deeppink4", "deepskyblue", "burlywood", "chartreuse", "aquamarine", "darkslateblue", "goldenrod"), drop = FALSE, name="Variables", labels=c("Purple in LB", "White in LB", "Purple in LB with Tryptophan", "White in LB with Tryptophan", "Purple in LB with Glycerol", "White in LB with Glycerol", "Purple with LB with Both", "Purple in LB with Both"))
 # This is really interesting, the violacein concentration does not really vary by phenotype
 #
 

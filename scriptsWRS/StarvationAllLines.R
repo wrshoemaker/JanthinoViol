@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github/JanthinoViol/')
+setwd('~/github/JanthinoViol/data')
 getwd()
 
 library(ggplot2)
@@ -9,9 +9,9 @@ library(RColorBrewer)
 library(plyr)
 library(Rmisc)
 
-Viol1day <- read.csv("./data/StarvationViolacein_OneDay_07212015_WJB.csv", header = T)
-Viol10day <- read.csv("./data/StarvationViolacein_TenDay_07212015_WJB.csv", header = T) 
-ViolInf <- read.csv("./data/StarvationViolacein_Infinite_07272015_WJB.csv", header = T) 
+Viol1day <- read.csv("StarvationViolacein_OneDay_07212015_WJB.csv", header = T)
+Viol10day <- read.csv("StarvationViolacein_TenDay_07212015_WJB.csv", header = T) 
+ViolInf <- read.csv("StarvationViolacein_Infinite_07272015_WJB.csv", header = T) 
 
 # So first we take subsets of the data that we're interested in
 Viol1Sub <- Viol1day[13:15,]
@@ -28,7 +28,7 @@ ViolMelt$Variables <- do.call(paste, c(ViolMelt[c("variable", "labels")], sep = 
 
 # Now plot
 ggplot(ViolMelt, aes(x=Variables, y=value, fill=variable)) + 
-  geom_boxplot()
+  geom_boxplot() + xlab("Variables") + ylab("Violacein Units") + scale_fill_manual(values=c("darkorchid4", "white"), name="Starting Phenotype", labels=c("Purple", "White"))
 
 # Let's start an ANOVA
 

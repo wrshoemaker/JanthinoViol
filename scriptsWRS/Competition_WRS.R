@@ -1,10 +1,11 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/data/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
+
 library(ggplot2)
 library(MASS)
-library(reshape2)
+library(reshape)
 
 compCFU <- read.csv("./Competition_07212015_WJB.csv", header = T)
 compRA <- read.csv("./Competition_07232015_WJB.csv", header = T)
@@ -37,7 +38,7 @@ ggplot(meltCFU, aes(x=variable, y=value, fill=variable)) + geom_boxplot()
 meltRA <- melt(compRA)
 ggplot(meltRA, aes(x=variable, y=value, fill=variable)) + 
   geom_boxplot() + 
-  geom_jitter()
+  geom_blank() + xlab("Testing Time") + ylab("Relative Abundance (CFU Purple:White)") + scale_fill_manual(values=c("forestgreen", "royalblue"), name="Sampling Time", labels=c("Before", "After"))
 
 # Not too bad so far, after there's more variation, a larger median
 # Let's see how it handles a Wilcoxon signed-rank test

@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -8,8 +8,9 @@ library(lattice)
 library(lsmeans)
 library(multcompView)
 library(plyr)
+library(reshape)
 
-epi <- read.csv("./data/EpigeneticsViolacein_07272015_WJB.csv", header = T)
+epi <- read.csv("EpigeneticsViolacein_07272015_WJB.csv", header = T)
 epi.melt <- melt(epi)
 qqnorm(epi.melt$value)
 wilcox.test(epi$Aza, epi$Control, paired=T) 
@@ -32,4 +33,4 @@ meltepiLog <- melt(subset(epi, select = c(AzaLog,ControlLog)))
 
 ggplot(meltepiLog, aes(x=variable, y=value, fill=variable)) + 
   geom_boxplot() + 
-  geom_jitter()
+  geom_blank() + xlab("Treatment") + ylab("Violacein Units") + scale_fill_manual(values=c("darkorchid4", "white"), name="Treatment", labels=c("Azacytidine", "Control"))
