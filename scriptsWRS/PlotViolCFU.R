@@ -75,16 +75,16 @@ ViolSE <- summarySE(ViolMerge, measurevar="value", groupvars=c("Day", "Variables
 ggplot(CFUcountSE, aes(x=Day, y=Total, colour=Variables)) + 
   geom_errorbar(aes(ymin=Total-se, ymax=Total+se), width=.1) +
   geom_line() +
-  geom_point() 
+  geom_point() + xlab("Day") + ylab("CFUs/mL")
 
 # Now the relative abundance 
 ggplot(CFUraSE, aes(x=Day, y=Ratio, colour=Variables)) + 
   geom_errorbar(aes(ymin=Ratio-se, ymax=Ratio+se), width=.1) +
   geom_line() +
-  geom_point() 
+  geom_point() + xlab("Day") + ylab("Ratio (CFU Purple:White)")
 
 # Violacein concentration 
 ggplot(ViolSE, aes(x=Day, y=value, colour=Variables)) + 
   geom_errorbar(aes(ymin=value-se, ymax=value+se), width=.1) +
   geom_line() +
-  geom_point() 
+  geom_point() + xlab("Day") + ylab("Violacein Units")

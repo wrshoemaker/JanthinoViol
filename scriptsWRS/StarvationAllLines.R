@@ -28,7 +28,7 @@ ViolMelt$Variables <- do.call(paste, c(ViolMelt[c("variable", "labels")], sep = 
 
 # Now plot
 ggplot(ViolMelt, aes(x=Variables, y=value, fill=variable)) + 
-  geom_boxplot()
+  geom_boxplot() + xlab("Variables") + ylab("Violacein Units") + scale_fill_manual(values=c("darkorchid4", "white"), name="Starting Phenotype", labels=c("Purple", "White"))
 
 # Let's start an ANOVA
 

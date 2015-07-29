@@ -1,6 +1,6 @@
 rm(list=ls())
 getwd()
-setwd('~/github//JanthinoViol/data/')
+setwd('~/github/JanthinoViol/data/')
 getwd()
 
 library(ggplot2)
@@ -16,6 +16,4 @@ qs.melt <- melt(qs)
 wilcox.test(value ~ variable, data=qs.melt) 
 
 # Plot it
-ggplot(qs.melt, aes(x=variable, y=value, fill=variable)) + geom_boxplot()
-
-# Later, fix plots, make them nicer. 
+ggplot(qs.melt, aes(x=variable, y=value, fill=variable)) + geom_boxplot() + xlab("Experimental Groups") + ylab("Violacein Units")+ scale_fill_manual(values=c("darkorchid4", "white"), name="Treatment", labels=c("White without Supernatant", "White with Supernatant"))  + geom_blank() 
