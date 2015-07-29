@@ -88,3 +88,26 @@ ggplot(ViolSE, aes(x=Day, y=value, colour=Variables)) +
   geom_errorbar(aes(ymin=value-se, ymax=value+se), width=.1) +
   geom_line() +
   geom_point() + xlab("Day") + ylab("Violacein Units")
+
+
+###
+###
+### Here we are starting our repeated measurs ANOVA
+
+# First, reformat the data
+require(plyr)
+# subset violacein so our data frames are of the same size
+subsetViol <- subset(ViolMerge, ViolMerge[ , 1] < 52)  
+# So the data is still unequal in length. I'll need to revisit this/ how to work on this
+
+
+CFUcountMergesubset <- data.frame(CFUcountMergesubset)
+CFURAmerge <- data.frame(CFURAmerge)
+ViolMerge <- data.frame(ViolMerge)
+
+CFUcountMergesubset$rn <- rownames(CFUcountMergesubset)
+CFURAmerge$rn <- rownames(CFURAmerge)
+ViolMerge$rn <- rownames(ViolMerge)
+
+df <- join_all(list(CFUcountMergesubset,CFURAmerge,ViolMerge), by = 'rn', type = 'full')
+test <- merge(CFUcountMergesubset,ViolMerge, by="row.names", all=TRUE)
