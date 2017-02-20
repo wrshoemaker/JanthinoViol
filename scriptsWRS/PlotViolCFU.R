@@ -14,6 +14,8 @@ library(reshape2)
 library(RColorBrewer)
 library(plyr)
 library(Rmisc)
+library(xlsx)
+library(lme4)
 
 # load data
 CFU1count <-  read.csv("StarvationColony_OneDay_07222015_WJB.csv", header = T)
@@ -31,8 +33,7 @@ CFU10count$Total <- as.numeric(CFU10count$Purple) + as.numeric(CFU10count$White)
 
 # These data sets are pretty much the same, 10 day and 1 day lines are just different treatments
 # So we can just add a column designating whether a row is from a 1 or 10 day line, and merge them
-CFU1count$Transfer <- rep(1,nrow(CFU1count)) 
-CFU10count$Transfer <- rep(10,nrow(CFU10count)) 
+meCFU10count$Transfer <- rep(10,nrow(CFU10count))
 
 # Now merge on the columns "Treatment"
 CFUcountMerge <- rbind(CFU1count, CFU10count)
@@ -111,3 +112,22 @@ ViolMerge$rn <- rownames(ViolMerge)
 
 df <- join_all(list(CFUcountMergesubset,CFURAmerge,ViolMerge), by = 'rn', type = 'full')
 test <- merge(CFUcountMergesubset,ViolMerge, by="row.names", all=TRUE)
+
+
+
+# I'm importing a datafile I made up quickly to get in the proper format
+dataRepeatedMeasures <- read.xlsx("RMANOVA_data.xlsx", 4)
+
+
+m1 <- lmer(Viol ~ Timepoint + (1|Subject), data=dataRepeatedMeasures)
+m2 <- lmer (Viol ~ Timepoint + (Timepoint|Subject), data=dataRepeatedMeasures)
+m3 <- lmer (Viol ~ Timepoint + Treatment + (Timepoint|Subject), data=dataRepeatedMeasures)
+m4 <- lmer (Viol ~ Timepoint + Treatment + Timepoint*Treatment + (Timepoint|Subject), data=dataRepeatedMeasures)
+
+library(nlme)
+# Try with AOV function
+analysis <- lme( Viol ~ Timepoint*  Treatment + Error( Subject / Timepoint), 
+                 data = dataRepeatedMeasures )
+
+lNull <- lme(Viol ~  Timepoint * Treatment,data=dataRepeatedMeasures, random= ~ 1 | Subject,
+             method=’REML’)
